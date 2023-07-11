@@ -75,7 +75,7 @@ export class GitCommandManager {
     globalConfig?: boolean,
     add?: boolean
   ): Promise<void> {
-    const args: string[] = ['config', globalConfig ? '--global' : '--local']
+    const args: string[] = ['config', globalConfig ? '--global' : '--local', '--unset-all']
     if (add) {
       args.push('--add')
     }
