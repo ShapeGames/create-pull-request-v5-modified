@@ -60,7 +60,10 @@ export async function createPullRequest(inputs: Inputs): Promise<void> {
     const git = await GitCommandManager.create(repoPath)
 
     // Save and unset the extraheader auth config if it exists
+
+    
     core.startGroup('Prepare git configuration')
+    await gitAuthHelper.removeAuth()
     gitAuthHelper = new GitAuthHelper(git)
     await gitAuthHelper.addSafeDirectory()
     await gitAuthHelper.savePersistedAuth()
